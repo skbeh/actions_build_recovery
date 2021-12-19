@@ -36,7 +36,7 @@ jobs:
       
     - name: Get variables
       env:
-        CONFIGURATION_FILE: config.json
+        CONFIGURATION_FILE: config-nx563j.json
       run: |
         echo "::set-output name=twrp_url::$(jq -r '.twrp_url' ${CONFIGURATION_FILE})"
         echo "::set-output name=twrp_branch::$(jq -r '.twrp_branch' ${CONFIGURATION_FILE})"
