@@ -32,7 +32,7 @@ jobs:
         sudo apt full-upgrade
         
     - name: Install required packages
-      run: sudo apt install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip jq
+      run: sudo apt install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip jq python-is-python2
       
     - name: Get variables
       run: |
@@ -113,7 +113,6 @@ jobs:
         tree device
         export ALLOW_MISSING_DEPENDENCIES=true
         source build/envsetup.sh
-        rm -f build/make/tools/check_radio_versions.py && wget -O build/make/tools/check_radio_versions.py https://raw.githubusercontent.com/LineageOS/android_build/c713d764c53e439352e79076eeecdbed9b2ccd6c/tools/check_radio_versions.py
         lunch omni_${{ steps.var.outputs.device_code }}-eng 
         mka recoveryimage -j$(nproc --all)
         
