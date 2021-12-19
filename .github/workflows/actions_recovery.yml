@@ -35,21 +35,23 @@ jobs:
       run: sudo apt install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip jq python-is-python2
       
     - name: Get variables
+      env:
+        CONFIGURATION_FILE: config.json
       run: |
-        echo "::set-output name=twrp_url::$(jq -r '.twrp_url' config.json)"
-        echo "::set-output name=twrp_branch::$(jq -r '.twrp_branch' config.json)"
-        echo "::set-output name=git_username::$(jq -r '.git_username' config.json)"
-        echo "::set-output name=git_email::$(jq -r '.git_email' config.json)"
-        echo "::set-output name=use_own_dt::$(jq -r '.use_own_dt' config.json)"
-        echo "::set-output name=dt_url::$(jq -r '.dt_url' config.json)"
-        echo "::set-output name=dt_remote::$(jq -r '.dt_remote' config.json)"
-        echo "::set-output name=dt_branch::$(jq -r '.dt_branch' config.json)"
-        echo "::set-output name=dt_path::$(jq -r '.dt_path' config.json)"
-        echo "::set-output name=device_code::$(jq -r '.device_code' config.json)"
-        echo "::set-output name=fix_product::$(jq -r '.fix_product' config.json)"
-        echo "::set-output name=fix_misscom::$(jq -r '.fix_misscom' config.json)"
-        echo "::set-output name=fix_busybox::$(jq -r '.fix_busybox' config.json)"
-        echo "::set-output name=fix_branch::$(jq -r '.fix_branch' config.json)"
+        echo "::set-output name=twrp_url::$(jq -r '.twrp_url' ${CONFIGURATION_FILE})"
+        echo "::set-output name=twrp_branch::$(jq -r '.twrp_branch' ${CONFIGURATION_FILE})"
+        echo "::set-output name=git_username::$(jq -r '.git_username' ${CONFIGURATION_FILE})"
+        echo "::set-output name=git_email::$(jq -r '.git_email' ${CONFIGURATION_FILE})"
+        echo "::set-output name=use_own_dt::$(jq -r '.use_own_dt' ${CONFIGURATION_FILE})"
+        echo "::set-output name=dt_url::$(jq -r '.dt_url' ${CONFIGURATION_FILE})"
+        echo "::set-output name=dt_remote::$(jq -r '.dt_remote' ${CONFIGURATION_FILE})"
+        echo "::set-output name=dt_branch::$(jq -r '.dt_branch' ${CONFIGURATION_FILE})"
+        echo "::set-output name=dt_path::$(jq -r '.dt_path' ${CONFIGURATION_FILE})"
+        echo "::set-output name=device_code::$(jq -r '.device_code' ${CONFIGURATION_FILE})"
+        echo "::set-output name=fix_product::$(jq -r '.fix_product' ${CONFIGURATION_FILE})"
+        echo "::set-output name=fix_misscom::$(jq -r '.fix_misscom' ${CONFIGURATION_FILE})"
+        echo "::set-output name=fix_busybox::$(jq -r '.fix_busybox' ${CONFIGURATION_FILE})"
+        echo "::set-output name=fix_branch::$(jq -r '.fix_branch' ${CONFIGURATION_FILE})"
         echo "::set-output name=date::$(date +%F)"
       id: var
       
