@@ -97,7 +97,7 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         cd workspace
-        repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+        repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags
         ls -al
         
     - name: Fix cannot locate product
