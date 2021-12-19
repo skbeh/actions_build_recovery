@@ -113,7 +113,7 @@ jobs:
         tree device
         export ALLOW_MISSING_DEPENDENCIES=true
         source build/envsetup.sh
-        rm -f build/make/tools/check_radio_versions.py && wget https://raw.githubusercontent.com/LineageOS/android_build/c713d764c53e439352e79076eeecdbed9b2ccd6c/tools/check_radio_versions.py
+        rm -f build/make/tools/check_radio_versions.py && wget -O build/make/tools/check_radio_versions.py https://raw.githubusercontent.com/LineageOS/android_build/c713d764c53e439352e79076eeecdbed9b2ccd6c/tools/check_radio_versions.py
         lunch omni_${{ steps.var.outputs.device_code }}-eng 
         mka recoveryimage -j$(nproc --all)
         
