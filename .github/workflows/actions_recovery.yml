@@ -3,6 +3,10 @@ name: rec-building
 on:
   watch:
     types: [started]
+  push:
+  schedule:
+    - cron:  0 0 * * *
+  workflow_dispatch:
     
 jobs:
   build:
