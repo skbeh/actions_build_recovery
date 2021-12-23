@@ -115,9 +115,8 @@ jobs:
         tree -L 4 device
         export ALLOW_MISSING_DEPENDENCIES=true
         source build/envsetup.sh
-        cat vendor/omni/build/tasks/kernel.mk
         lunch omni_${{ steps.var.outputs.device_code }}-eng
-        mka recoveryimage -j$(nproc --all)
+        mka recoveryimage
         
     - name: Upload REC
       uses: softprops/action-gh-release@v1
